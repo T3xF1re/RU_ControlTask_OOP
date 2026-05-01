@@ -28,6 +28,25 @@ Date::Date(short year, short month, short day)
         this->year = 0;
     }
 };
+Date::Date(const string date)
+{
+    this->day = (date[0] - '0') * 10 + date[1] - '0';
+    this->month = (date[3] - '0') * 10 + date[4] - '0';
+    this->year = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + date[9] - '0';
+
+    if (checkValidDate(this->day, this->month, this->year))
+    {
+        this->day = day;
+        this->month = month;
+        this->year = year;
+    }
+    else
+    {
+        this->day = 0;
+        this->month = 0;
+        this->year = 0;
+    }
+};
 Date::Date(Date& date)
 {
     if (checkValidDate(date.day, date.month, date.year))

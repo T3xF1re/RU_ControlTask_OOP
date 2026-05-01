@@ -31,3 +31,8 @@ void Game::printInfo() const
     cout << "." << endl << "The current version: "; this->currentVersion.printVersion();
     cout << " is " << this->size << "GB and has " << ceil(this->ratingStars * 10) / 10.0 << " stars rating.\n";
 }
+
+string Game::getName()
+{
+    return this->name;
+}

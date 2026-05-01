@@ -20,7 +20,9 @@ public:
     Game(string name, string dev, Date& date, Version& version, double size, double stars);
     Game(Game& game);
 
+    string getName();
     virtual void update() = 0;
+    //virtual void interact();
 
     virtual void printInfo() const;
 };

@@ -1,0 +1,4 @@
+﻿  Player.cpp
+D:\MyFolder\Coding\RU_ControlTask_OOP\RU_ControlTask_OOP\Player.cpp(24,1): warning C4715: 'Player::chooseGenre': not all control paths return a value
+D:\MyFolder\Coding\RU_ControlTask_OOP\RU_ControlTask_OOP\Player.cpp(180,1): warning C4715: 'Player::downloadGame': not all control paths return a value
+  RU_ControlTask_OOP.vcxproj -> D:\MyFolder\Coding\RU_ControlTask_OOP\x64\Debug\RU_ControlTask_OOP.exe

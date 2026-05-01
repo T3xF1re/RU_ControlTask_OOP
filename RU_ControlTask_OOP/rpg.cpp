@@ -7,7 +7,7 @@ RPG::RPG() :
     MultiplayerGame(),
         numberOfClasses(0), classes(nullptr), numberOfOptions(0), customisationOptions(nullptr) {};
 
-RPG::RPG(string name, string dev, int relDay, int relMonth, int relYear, int version, double size, double stars, string objective, int obstaclesNum, const string* obstacles, int classesNum, const string* classes, int optionsNum, const string* options, int onlinePlayers, int servers, int downloads, int levels) :
+RPG::RPG(string name, string dev, int relDay, int relMonth, int relYear, int version, double size, double stars, string objective, int classesNum, const string* classes, int optionsNum, const string* options, int onlinePlayers, int servers, int downloads, int levels) :
     Game(name, dev, relDay, relMonth, relYear, version, size, stars),
     SingleplayerGame(name, dev, relDay, relMonth, relYear, version, size, stars, objective, downloads, levels),
     MultiplayerGame(name, dev, relDay, relMonth, relYear, version, size, stars, onlinePlayers, servers),
@@ -17,7 +17,7 @@ RPG::RPG(string name, string dev, int relDay, int relMonth, int relYear, int ver
     createValuedStringArray(this->customisationOptions, options, this->numberOfOptions);
 }
 
-RPG::RPG(string name, string dev, Date& date, Version& version, double size, double stars, string objective, int obstaclesNum, const string* obstacles, int classesNum, const string* classes, int optionsNum, const string* options, int onlinePlayers, int servers, int downloads, int levels) :
+RPG::RPG(string name, string dev, Date& date, Version& version, double size, double stars, string objective, int classesNum, const string* classes, int optionsNum, const string* options, int onlinePlayers, int servers, int downloads, int levels) :
     Game(name, dev, date, version, size, stars),
     SingleplayerGame(name, dev, date, version, size, stars, objective, downloads, levels),
     MultiplayerGame(name, dev, date, version, size, stars, onlinePlayers, servers),

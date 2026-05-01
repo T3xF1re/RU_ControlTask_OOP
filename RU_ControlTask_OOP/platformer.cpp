@@ -6,7 +6,7 @@ Platformer::Platformer() :
     SingleplayerGame(),
         numberOfObstacles(0), obstacles(nullptr) {};
 
-Platformer::Platformer(string name, string dev, int relDay, int relMonth, int relYear, int version, double size, double stars, int obstaclesNum, string objective, const string* obstacles, int downloads, int levels) :
+Platformer::Platformer(string name, string dev, int relDay, int relMonth, int relYear, int version, double size, double stars, int obstaclesNum, const string* obstacles, string objective, int downloads, int levels) :
     Game(name, dev, relDay, relMonth, relYear, version, size, stars),
     SingleplayerGame(name, dev, relDay, relMonth, relYear, version, size, stars, objective, downloads, levels),
         numberOfObstacles(obstaclesNum)
@@ -52,7 +52,7 @@ void Platformer::addObstacle(string newObstacle)
 
     delete[] tempObst;
 }
-void Platformer::removeObstacle(string wasteObstacle, int wastePos)
+/*void Platformer::removeObstacle(string wasteObstacle, int wastePos)
 {
     string* tempObst = this->obstacles;
 
@@ -64,7 +64,7 @@ void Platformer::removeObstacle(string wasteObstacle, int wastePos)
     }
 
     delete[] tempObst;
-}
+}*/
 
 void Platformer::printInfo() const
 {

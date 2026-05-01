@@ -18,6 +18,7 @@ class Date
 public:
     Date();
     Date(short year, short month = 1, short day = 1);
+    Date(const string date);
     Date(Date& date);
     Date(Date&& date) noexcept;
     ~Date();
