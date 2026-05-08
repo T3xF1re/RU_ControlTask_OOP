@@ -13,4 +13,9 @@ public:
 	MOBA(string name, string dev, Date& date, Version& version, double size, double stars, int charactersNum, const string* characters, int onlinePlayers, int servers = 1);
 	MOBA(MOBA& moba);
 	~MOBA();
+
+	void addCharacter();
+	void interact() override;
+
+	void printInfo() const;
 };

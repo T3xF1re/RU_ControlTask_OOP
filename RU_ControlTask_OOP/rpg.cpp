@@ -44,22 +44,70 @@ RPG::~RPG()
 }
 
 
+void RPG::addClass()
+{
+    cout << "Enter your new class: ";
+    string newClass;
+    cin >> newClass;
+
+    string* tempClasses = this->classes;
+
+    this->classes = new string[++this->numberOfClasses];
+
+    for (int i = 0; i < this->numberOfClasses - 1; ++i)
+        this->classes[i] = tempClasses[i];
+    this->classes[this->numberOfClasses - 1] = newClass;
+
+    delete[] tempClasses;
+    cout << "New class successfully added!\n";
+}
+
+void RPG::interact()
+{
+    char intAns = ' ';
+
+    cout << "You opened a game called: " << this->getName() << ".\n";
+
+    while (intAns != 'Q' && intAns != 'q')
+    {
+        cout << "How do you wish to proceed?\n\n";
+        cout << "You can choose what to do next by entering the symbol in the brackets ():\n";
+        cout << "(S)tart a level.\n";
+        cout << "(A)dd a new class.\n";
+        cout << "(P)rint a resume about the game.\n";
+        cout << "(Q)uit game.\n";
+
+        cin >> intAns;
+
+        switch (intAns)
+        {
+        case 'S': case 's':
+            cout << "Playing a level........................................\n";
+            cout << "You have finished playing the level. Going back to the interaction menu...\n\n";  break;
+        case 'A': case 'a':
+            this->addClass(); break;
+        case 'P': case 'p':
+            this->printInfo(); break;
+        }
+    }
+}
+
 void RPG::update()
 {
-
-    int verPos = rand() % 4;
-    int newVersion = this->currentVersion.getVersion() + (int)pow(100, verPos);
-
-    this->currentVersion.changeVersion(newVersion);
-
-    this->onlinePlayers = this->onlinePlayers * (rand() % 150 + 1) / 100;
-    calcPing();
+    MultiplayerGame::update();
 }
+
 void RPG::printInfo() const
 {
-    //SingleplayerGame::printInfo();
-    //cout << "Currently it has " << this->numberOfObstacles << " different obstacles being: " << this->obstacles[0];
-    //for (int i = 1; i < this->numberOfObstacles; ++i)
-    //    cout << ", " << this->obstacles[i];
-    //cout << endl;
+    SingleplayerGame::printInfo();
+    cout << "Currently it has " << this->onlinePlayers << " players online and " << this->availableServers << " available servers with average ping of " << ceil(this->averagePing * 10) / 10.0 << ".\n";
+
+    cout << "Currently it has " << this->numberOfOptions << " different customization options to choose from being: " << this->customisationOptions[0];
+    for (int i = 1; i < this->numberOfOptions; ++i)
+        cout << ", " << this->customisationOptions[i];
+    cout << endl;
+    cout << "and " << this->numberOfClasses << " different classes to choose from being: " << this->classes[0];
+    for (int i = 1; i < this->numberOfClasses; ++i)
+        cout << ", " << this->classes[i];
+    cout << endl;
 }

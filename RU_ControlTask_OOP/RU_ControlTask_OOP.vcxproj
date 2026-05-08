@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="helpfulClassesAndFunctions.cpp" />
+    <ClCompile Include="heroShooter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mmorpg.cpp" />
     <ClCompile Include="moba.cpp" />
     <ClCompile Include="multiplayerGame.cpp" />
     <ClCompile Include="platformer.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="rpg.cpp" />
     <ClCompile Include="sandbox.cpp" />
     <ClCompile Include="shooter.cpp" />

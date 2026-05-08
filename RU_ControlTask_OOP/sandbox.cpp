@@ -40,8 +40,12 @@ Sandbox::~Sandbox()
 }
 
 
-void Sandbox::addMaterial(string newMaterial)
+void Sandbox::addMaterial()
 {
+    cout << "Enter your new material: ";
+    string newMaterial;
+    cin >> newMaterial;
+
     string* tempMat = this->materials;
 
     this->materials = new string[++this->numberOfMaterials];
@@ -50,6 +54,37 @@ void Sandbox::addMaterial(string newMaterial)
     this->materials[this->numberOfMaterials - 1] = newMaterial;
 
     delete[] tempMat;
+    cout << "New material successfully added!\n";
+}
+
+void Sandbox::interact()
+{
+    char intAns = ' ';
+
+    cout << "You opened a game called: " << this->getName() << ".\n";
+
+    while (intAns != 'Q' && intAns != 'q')
+    {
+        cout << "How do you wish to proceed?\n\n";
+        cout << "You can choose what to do next by entering the symbol in the brackets ():\n";
+        cout << "(S)tart a level.\n";
+        cout << "(A)dd a new material.\n";
+        cout << "(P)rint a resume about the game.\n";
+        cout << "(Q)uit game.\n";
+
+        cin >> intAns;
+
+        switch (intAns)
+        {
+        case 'S': case 's':
+            cout << "Playing a level........................................\n";
+            cout << "You have finished playing the level. Going back to the interaction menu...\n\n";  break;
+        case 'A': case 'a':
+            this->addMaterial(); break;
+        case 'P': case 'p':
+            this->printInfo(); break;
+        }
+    }
 }
 
 void Sandbox::printInfo() const
@@ -58,6 +93,7 @@ void Sandbox::printInfo() const
     cout << "Currently it has " << this->numberOfMaterials << " different materials to choose from being: " << this->materials[0];
     for (int i = 1; i < this->numberOfMaterials; ++i)
         cout << ", " << this->materials[i];
+    cout << endl;
     cout << " and " << this->numberOfShapes << " different shapes to choose from being: " << this->shapes[0];
     for (int i = 1; i < this->numberOfShapes; ++i)
         cout << ", " << this->shapes[i];

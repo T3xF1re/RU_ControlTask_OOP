@@ -23,6 +23,7 @@ public:
 
     //randomly changing the version
     void update() override;
+    void interact() override = 0;
 
     void printInfo() const override;
 };

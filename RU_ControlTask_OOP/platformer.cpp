@@ -41,8 +41,12 @@ Platformer::~Platformer()
 }
 
 
-void Platformer::addObstacle(string newObstacle)
+void Platformer::addObstacle()
 {
+    cout << "Enter your new obstacle: ";
+    string newObstacle;
+    cin >> newObstacle;
+
     string* tempObst = this->obstacles;
 
     this->obstacles = new string[++this->numberOfObstacles];
@@ -51,6 +55,7 @@ void Platformer::addObstacle(string newObstacle)
     this->obstacles[this->numberOfObstacles - 1] = newObstacle;
 
     delete[] tempObst;
+    cout << "New obstacle successfully added!\n";
 }
 /*void Platformer::removeObstacle(string wasteObstacle, int wastePos)
 {
@@ -65,6 +70,37 @@ void Platformer::addObstacle(string newObstacle)
 
     delete[] tempObst;
 }*/
+
+void Platformer::interact()
+{
+    char intAns = ' ';
+
+    cout << "You opened a game called: " << this->getName() << ".\n";
+
+    while (intAns != 'Q' && intAns != 'q')
+    {
+        cout << "How do you wish to proceed?\n\n";
+        cout << "You can choose what to do next by entering the symbol in the brackets ():\n";
+        cout << "(S)tart a level.\n";
+        cout << "(A)dd a new obstacle.\n";
+        cout << "(P)rint a resume about the game.\n";
+        cout << "(Q)uit game.\n";
+
+        cin >> intAns;
+        int posAns;
+
+        switch (intAns)
+        {
+        case 'S': case 's':
+            cout << "Playing a level........................................\n";
+            cout << "You have finished playing the level. Going back to the interaction menu...\n\n";  break;
+        case 'A': case 'a':
+            this->addObstacle(); break;
+        case 'P': case 'p':
+            this->printInfo(); break;
+        }
+    }
+}
 
 void Platformer::printInfo() const
 {

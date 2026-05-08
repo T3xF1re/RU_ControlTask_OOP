@@ -88,7 +88,7 @@ const Game* Player::downloadGame()
 	string newObjective;
 	int newTotalDownloads;
 	int newNumberOfLevels;
-	if (newGenre == _Platformer || newGenre == _Sandbox || newGenre == _RPG) // means it's from the Singleplayer Game class
+	if (newGenre == _Platformer || newGenre == _Sandbox || newGenre == _RPG || newGenre == _MMORPG) // means it's from the Singleplayer Game class
 	{
 		cout << "What is main objective of the game: ";
 		cin >> newObjective;
@@ -99,7 +99,7 @@ const Game* Player::downloadGame()
 	}
 	int newOnlinePlayers;
 	int newAvailableServers;
-	if (newGenre == _MOBA || newGenre == _Shooter || newGenre == _RPG) // means it's from the Multiplayer Game class
+	if (newGenre == _MOBA || newGenre == _Shooter || newGenre == _RPG || newGenre == _MMORPG || newGenre == _HeroShooter) // means it's from the Multiplayer Game class
 	{
 		cout << "How many online players does the game currently have: ";
 		cin >> newOnlinePlayers;
@@ -111,6 +111,8 @@ const Game* Player::downloadGame()
 	string* strArr1 = nullptr;
 	int strArr2Length = 0;
 	string* strArr2 = nullptr;
+	int strArr3Length = 0;
+	string* strArr3 = nullptr;
 	switch (newGenre)
 	{
 	case _Platformer:
@@ -169,13 +171,63 @@ const Game* Player::downloadGame()
 			cin >> strArr1[i];
 		}
 		cout << "How many customization options does the game have: "; cin >> strArr1Length;
+		strArr2 = new string[strArr2Length];
+		for (int i = 0; i < strArr2Length; ++i)
+		{
+			cout << "Option " << i + 1 << ": ";
+			cin >> strArr2[i];
+		}
+		return new RPG(newName, newDeveloper, newReleaseDate, newCurrentVersion, newSize, newRatingStars, newObjective, strArr1Length, strArr1, strArr2Length, strArr2, newOnlinePlayers, newAvailableServers, newTotalDownloads, newNumberOfLevels);
+	
+	case _MMORPG:
+		cout << "How many classes does the game have: "; cin >> strArr1Length;
 		strArr1 = new string[strArr1Length];
 		for (int i = 0; i < strArr1Length; ++i)
 		{
-			cout << "Option " << i + 1 << ": ";
+			cout << "Class " << i + 1 << ": ";
 			cin >> strArr1[i];
 		}
-		return new RPG(newName, newDeveloper, newReleaseDate, newCurrentVersion, newSize, newRatingStars, newObjective, strArr1Length, strArr1, strArr2Length, strArr2, newOnlinePlayers, newAvailableServers, newTotalDownloads, newNumberOfLevels);
+		cout << "How many customization options does the game have: "; cin >> strArr1Length;
+		strArr2 = new string[strArr2Length];
+		for (int i = 0; i < strArr2Length; ++i)
+		{
+			cout << "Option " << i + 1 << ": ";
+			cin >> strArr2[i];
+		}
+		cout << "How much different npcs does the game have: "; cin >> strArr1Length;
+		strArr3 = new string[strArr3Length];
+		for (int i = 0; i < strArr3Length; ++i)
+		{
+			cout << "NPC " << i + 1 << ": ";
+			cin >> strArr3[i];
+		}
+		return new MMORPG(newName, newDeveloper, newReleaseDate, newCurrentVersion, newSize, newRatingStars, newObjective, strArr1Length, strArr1, strArr2Length, strArr2, strArr3Length, strArr3, newOnlinePlayers, newAvailableServers);
+
+
+	case _HeroShooter:
+		cout << "How many characters does the game have: "; cin >> strArr1Length;
+		strArr1 = new string[strArr1Length];
+		for (int i = 0; i < strArr1Length; ++i)
+		{
+			cout << "Character " << i + 1 << ": ";
+			cin >> strArr1[i];
+		}
+		cout << "How much different gear does the game have: "; cin >> strArr1Length;
+		strArr2 = new string[strArr2Length];
+		for (int i = 0; i < strArr2Length; ++i)
+		{
+			cout << "Piece of gear " << i + 1 << ": ";
+			cin >> strArr2[i];
+		}
+		cout << "How much different monsters does the game have: "; cin >> strArr1Length;
+		strArr3 = new string[strArr3Length];
+		for (int i = 0; i < strArr3Length; ++i)
+		{
+			cout << "Monster " << i + 1 << ": ";
+			cin >> strArr3[i];
+		}
+		return new HeroShooter(newName, newDeveloper, newReleaseDate, newCurrentVersion, newSize, newRatingStars, strArr1Length, strArr1, strArr2Length, strArr2, strArr3Length, strArr3, newOnlinePlayers, newAvailableServers);
+
 	}
 }
 
@@ -188,16 +240,18 @@ void Player::deleteGame(int pos)
 
 	char answer = ' ';
 	cout << "Do you wish to continue uninstalling " << deleteName << "? (y/n): ";
+	cin >> answer;
 	if (answer != 'Y' && answer != 'y')
 		return;
 	cout << "Do you REALLY wish to uninstall " << deleteName << "? (y/n): ";
 	if (answer != 'Y' && answer != 'y')
 		return;
+	cin >> answer;
 	cout << "You won't be able to play " << deleteName << "! Continue? (y/n): ";
 	if (answer != 'Y' && answer != 'y')
 		return;
+	cin >> answer;
 
-	delete this->games[pos - 1];
 	this->games[pos - 1] = this->games[this->numberOfGames - 1];
 	this->games[this->numberOfGames - 1] = nullptr;
 
@@ -210,10 +264,7 @@ void Player::openGame(int pos)
 	while (pos <= 0 || pos > this->numberOfGames)
 		cout << "You can't go below 1 game or don't have that much downloaded games!" << endl << "Try with a different number." << endl;
 
-	cout << "You opened " << this->games[pos - 1] << ".\n";
-	cout << "What would you like to do now:\n\n";
-
-	//this->games[pos - 1]->interact();
+	this->games[pos - 1]->interact();
 }
 
 void Player::printAllGamesInfo()

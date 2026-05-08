@@ -19,5 +19,7 @@ public:
 
     //randomly changing the version and setting new number of online players
     void update() override;
+    void interact() override = 0;
+
     void printInfo() const override;
 };

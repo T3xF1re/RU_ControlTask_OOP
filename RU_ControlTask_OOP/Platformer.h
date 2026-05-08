@@ -14,8 +14,9 @@ public:
     Platformer(Platformer& platformer);
     ~Platformer();
 
-    void addObstacle(string newObstacle);
+    void addObstacle();
     //void removeObstacle(string wasteObstacle = "", int wastePos = 0);
+    void interact() override;
 
     void printInfo() const override;
 };

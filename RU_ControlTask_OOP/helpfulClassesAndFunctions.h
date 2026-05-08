@@ -21,7 +21,7 @@ public:
     Date(const string date);
     Date(Date& date);
     Date(Date&& date) noexcept;
-    ~Date();
+    //~Date();
     void printDate() const;
 };
 
@@ -35,7 +35,7 @@ public:
     Version(int version);
     Version(Version& version);
     Version(Version&& version) noexcept;
-    ~Version();
+    //~Version();
 
     //changing the version (setter)
     void changeVersion(int newVersion);

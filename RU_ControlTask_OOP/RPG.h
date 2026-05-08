@@ -13,10 +13,13 @@ protected:
 public:
     RPG();
     RPG(string name, string dev, int relDay, int relMonth, int relYear, int version, double size, double stars, string objective, int classesNum, const string* classes, int optionsNum, const string* options, int onlinePlayers, int servers = 1, int downloads = 0, int levels = 1);
-    RPG(string name, string dev, Date& date, Version& version, double size, double stars, string objective, int classesNum, const string* classes, int customisationOptionsNum, const string* customisationOptions, int onlinePlayers, int servers = 1, int downloads = 0, int levels = 1);
+    RPG(string name, string dev, Date& date, Version& version, double size, double stars, string objective, int classesNum, const string* classes, int optionsNum, const string* options, int onlinePlayers, int servers = 1, int downloads = 0, int levels = 1);
     RPG(RPG& rpg);
     ~RPG();
 
+    void addClass();
+    void interact() override;
     void update() override;
+
     void printInfo() const override;
 };

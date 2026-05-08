@@ -80,7 +80,7 @@ Date::Date(Date&& date) noexcept
     date.month = 0;
     date.year = 0;
 }
-Date::~Date() {};
+//Date::~Date() {};
 
 bool Date::checkValidDate(short day, short month, short year)
 {
@@ -135,7 +135,7 @@ Version::Version(Version&& version) noexcept
     changeVersion(version.version);
     version.version = 0;
 };
-Version::~Version() {};
+//Version::~Version() {};
 
 //changing the version (setter)
 void Version::changeVersion(int newVersion)

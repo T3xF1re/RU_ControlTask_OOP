@@ -13,4 +13,9 @@ public:
 	Shooter(string name, string dev, Date& date, Version& version, double size, double stars, int gearNum, const string* gear, int onlinePlayers, int servers = 1);
 	Shooter(Shooter& shotr);
 	~Shooter();
+
+	void addGear();
+	void interact() override;
+
+	void printInfo() const;
 };

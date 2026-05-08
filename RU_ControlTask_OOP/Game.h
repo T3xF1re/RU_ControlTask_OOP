@@ -22,7 +22,7 @@ public:
 
     string getName();
     virtual void update() = 0;
-    //virtual void interact();
+    virtual void interact() = 0;
 
     virtual void printInfo() const;
 };

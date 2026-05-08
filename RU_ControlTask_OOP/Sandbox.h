@@ -16,7 +16,8 @@ public:
     Sandbox(Sandbox& sndbox);
     ~Sandbox();
 
-    void addMaterial(string newMaterial);
+    void addMaterial();
+    void interact() override;
 
     void printInfo() const;
 };

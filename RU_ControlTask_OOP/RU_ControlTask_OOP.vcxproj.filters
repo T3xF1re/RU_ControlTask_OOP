@@ -45,7 +45,13 @@
     <ClCompile Include="shooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mmorpg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="heroShooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
