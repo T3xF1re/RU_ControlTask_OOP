@@ -3,4 +3,4 @@
 Sorry if the code is painful to read but that's me ¯\(°_o)/¯
 
 
-![Class Diagram](docs/class-diagram.png)
+![Class Diagram](Class_Diagram-Game.png)
